@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      cursor:url(/Projects/2396.cur), auto;
+      background-color: #1c1c1c;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background-color: #222426;
+      color: #fff;
+      border-bottom: 2px solid #dcef0a;
+    }
+    .navbar .brand {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .navbar .brand a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+    .navbar ul li {
+      margin: 0;
+    }
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .navbar ul li a:hover {
+      text-decoration: underline;
+    }
+    .navbar .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .navbar input[type="search"] {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .navbar button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #e8a45f;
+      color: #fff;
+      cursor: pointer;
+    }
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero .picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .hero .picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero .intro {
+      color: #fff;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      max-width: 70%;
+      margin: 0 auto;
+    }
+    .hero .intro h1 {
+      font-size: 44px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #e8a45f;
+    }
+    .hero .intro p {
+      font-size: 22px;
+      line-height: 1.6;
+      margin-top: 0;
+    }
+    .hero .intro span {
+      font-weight: 600;
+      color: #e8a45f;
+    }
+    .intro-section, .projects-section, .interests-section, .comment-section {
+      padding: 50px 30px;
+      background-color: #222426;
+      color: #fff;
+      border-radius: 12px;
+      max-width: 90%;
+      margin: 50px auto;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .intro-section h2, .projects-section h2, .interests-section h2, .comment-section h2 {
+      font-size: 36px;
+      color: #e8a45f;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .intro-section h2::before, .projects-section h2::before, .interests-section h2::before, .comment-section h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 100%;
+      background: #e8a45f;
+      transform: translateX(-100%);
+      transition: transform 0.5s ease-in-out;
+    }
+    .intro-section h2:hover::before, .projects-section h2:hover::before, .interests-section h2:hover::before, .comment-section h2:hover::before {
+      transform: translateX(0);
+    }
+    .intro-section p, .projects-section p, .interests-section p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .animated-text {
+      font-size: 36px;
+      color: #e8a45f;
+      margin-bottom: 20px;
+      animation: modernFade 5s ease-in-out infinite;
+    }
+    @keyframes modernFade {
+      0% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0; transform: scale(0.9); }
+    }
+    .comment-section form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .comment-section label {
+      margin: 10px 0;
+    }
+    .comment-section input, .comment-section textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .comment-section button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #e8a45f;
+      color: #fff;
+      cursor: pointer;
+    }
+    .comments-list {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .comments-list div {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background-color: #333;
+    }
+    footer {
+      background-color: #222426;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    .footer-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer-content ul li a {
+      color: #e8a45f;
+      text-decoration: none;
+    }
+    .footer-content ul li a:hover {
+      text-decoration: underline;
+    }
+    .highlight {
+      background-color: yellow;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand"><a href="#">Chaudhary Ehsan</a></div>
+    <ul>
+      <li><a href="#introduction">Intro</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#interests">Interests</a></li>
+    </ul>
+    <div class="search-container">
+      <input type="search" id="search-input" placeholder="Search...">
+      <button id="search-button" type="button">Search</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="picture">
+      <img src="hero.jpg" alt="Hero Image">
+    </div>
+    <div class="intro">
+      <h1>Welcome to My Portfolio!</h1>
+      <p>I'm a Computer Science student with a deep passion for various fields including <span>Philosophy, Psychology, Social Sciences, History, Military Studies, and Religion</span>. Explore my collection of projects and achievements in Computer Science, and dive into updates on my diverse interests.</p>
+    </div>
+  </div>
+
+  <div class="intro-section" id="introduction">
+    <div class="animated-text">Introduction</div>
+    <h3>Born in 2002 in <span style="color: #e8a45f;">Gujarkhan</span> with a knack for curiosity and learning. I scored 88% in Matric and was always eager to understand everything around me. I had a fascination with many things and subjects, and <span style="color: #e8a45f;">technology</span> was one of them, especially computers, inspired by a cousin who was a <span style="color: #e8a45f;">Software Engineer</span>. Although I didn’t fully grasp what software engineering was at the time, my interest was sparked. My aspirations then shifted towards the <span style="color: #e8a45f;">Military</span>, aiming to become an Army Officer, but life had different plans. I redirected my focus to Computer Science, gaining admission to <span style="color: #e8a45f;">Capital University Islamabad</span> for a BS in CS. Currently, I’m delving into <span style="color: #e8a45f;">Web Development</span> and just started exploring the <span style="color: #e8a45f;">.NET Framework</span>. Looking ahead, I aspire to venture into the <span style="color: #e8a45f;">Cyber Security industry</span>.</h3>
+  </div>
+
+  <div class="projects-section" id="projects">
+    <div class="animated-text">Projects</div>
+    <p>I'll be uploading my Projects soon...</p>
+  </div>
+
+  <div class="interests-section" id="interests">
+    <div class="animated-text">
+    Interests </div>
+
+    <p>Explore my interests in various fields including <span style="color: #e8a45f;">Philosophy</span>, <span style="color: #e8a45f;">Psychology</span>, <span style="color: #e8a45f;">Social Sciences</span>, <span style="color: #e8a45f;">History</span>, <span style="color: #e8a45f;">Military Studies</span>, and <span style="color: #e8a45f;">Religion</span>. Each of these areas has shaped my perspective and contributes to my understanding of the world.</p>
+  </div>
+
+  <div class="comment-section" id="contact">
+    <h2>Add Comment</h2>
+    <form id="comment-form">
+      <label for="comment-name">Name:</label>
+      <input type="text" id="comment-name" name="name" required>
+      
+      <label for="comment-text">Comment:</label>
+      <textarea id="comment-text" name="comment" rows="4" required></textarea>
+      
+      <button type="submit">Submit Comment</button>
+    </form>
+    <div id="comments-list" class="comments-list"></div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>Connect with me:</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a></li>
+        <li><a href="mailto:your-email@gmail.com">Gmail</a></li>
+      </ul>
+      <p>&copy; 2024 Chaudhary Ehsan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('comment-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      const name = document.getElementById('comment-name').value;
+      const comment = document.getElementById('comment-text').value;
+
+      if (name && comment) {
+        const commentDiv = document.createElement('div');
+        commentDiv.innerHTML = `<strong>${name}:</strong> <p>${comment}</p>`;
+        document.getElementById('comments-list').appendChild(commentDiv);
+
+        // Clear the form fields
+        document.getElementById('comment-name').value = '';
+        document.getElementById('comment-text').value = '';
+      }
+    })
+        document.getElementById('search-button').addEventListener('click', function() {
+      const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+      
+      // Remove previous highlights
+      document.querySelectorAll('.highlight').forEach(el => {
+        el.classList.remove('highlight');
+      });
+
+      if (searchTerm) {
+        // Search for and highlight occurrences
+        const bodyText = document.body.innerHTML;
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        document.body.innerHTML = bodyText.replace(regex, '<span class="highlight">$1</span>');
+
+        // Scroll to the first highlighted term
+        const firstHighlight = document.querySelector('.highlight');
+        if (firstHighlight) {
+          firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>
